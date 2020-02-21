@@ -1,0 +1,12 @@
+*.iws
+*.launch
+*.iml
+*.bat
+*.txt
+.idea
+desktop.ini/
+.classpath
+.factorypath
+.springBeans
+target
+out
