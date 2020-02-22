@@ -1,5 +1,7 @@
 package org.example.ejb;
 
+import org.example.jpa.User;
+
 import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
 import javax.enterprise.inject.Produces;
@@ -18,13 +20,6 @@ public class UserDao {
     private EntityManager em;
 
     private User newMember;
-
-    public void save(){
-        System.out.println(newMember);
-        em.persist(newMember);
-        initNewMember();
-        //return true;
-    }
 
     public void test(){
         System.out.println(findAll());

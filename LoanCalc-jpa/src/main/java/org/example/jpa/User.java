@@ -1,4 +1,4 @@
-package org.example.ejb;
+package org.example.jpa;
 
 import javax.inject.Named;
 import javax.persistence.*;
