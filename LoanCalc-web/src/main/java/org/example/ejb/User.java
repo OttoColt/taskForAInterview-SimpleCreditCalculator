@@ -2,19 +2,23 @@ package org.example.ejb;
 
 import javax.inject.Named;
 import javax.persistence.*;
+import javax.validation.constraints.Size;
+import java.io.Serializable;
 
 @Entity
 @Named
 @Table(name = "Registrant")
-public class User {
+public class User implements Serializable {
+
     @Id
     @GeneratedValue
     private int id;
 
-
+    @Size(min = 1, max = 25)
     @Column(nullable = false, unique = true)
     private String login;
 
+    @Size(min = 1, max = 25)
     @Column(nullable = false)
     private String password;
 

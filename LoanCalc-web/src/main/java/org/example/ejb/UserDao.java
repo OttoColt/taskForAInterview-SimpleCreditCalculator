@@ -23,6 +23,7 @@ public class UserDao {
         System.out.println(newMember);
         em.persist(newMember);
         initNewMember();
+        //return true;
     }
 
     public void test(){
@@ -33,9 +34,28 @@ public class UserDao {
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<User> criteria = cb.createQuery(User.class);
         Root<User> member = criteria.from(User.class);
-
         criteria.select(member);
         return em.createQuery(criteria).getResultList();
+    }
+
+    public String isRegistered() {
+        System.out.println(newMember.getLogin());
+
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<User> criteria = cb.createQuery(User.class);
+        Root<User> member = criteria.from(User.class);
+
+        criteria.select(member).where(cb.equal(member.get("login"), newMember.getLogin()));
+
+        User user = em.createQuery(criteria).getSingleResult();
+
+        System.out.println(user);
+
+        if(user.getPassword().equals(newMember.getPassword())){
+            System.out.println("is registered");
+            return "true";
+        }
+        return null;
     }
 
     @Produces

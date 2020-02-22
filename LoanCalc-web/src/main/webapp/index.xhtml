@@ -28,7 +28,7 @@
         </h:panelGrid>
         <p>
             <h:panelGrid columns="2">
-                <h:commandButton id="signIn" action="#{userDao.save}" value="save!"/>
+                <h:commandButton id="signIn" action="#{userDao.isRegistered}" value="signIn!"/>
                 <h:commandButton id="test" action="#{userDao.test}" value="test!"/>
             </h:panelGrid>
         </p>
