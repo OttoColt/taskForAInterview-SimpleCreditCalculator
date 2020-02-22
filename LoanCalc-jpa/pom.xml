@@ -9,9 +9,9 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+    <artifactId>LoanCalc-jpa</artifactId>
 
-    <artifactId>LoanCalc-ejb</artifactId>
-    <name>LoanCalc: EJB Module</name>
+    <name>LoanCalc: JPA Module</name>
 
     <dependencies>
 
@@ -38,6 +38,4 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
-
-
 </project>
