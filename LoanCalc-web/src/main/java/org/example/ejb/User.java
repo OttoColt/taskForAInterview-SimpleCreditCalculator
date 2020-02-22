@@ -2,7 +2,6 @@ package org.example.ejb;
 
 import javax.inject.Named;
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 
 @Entity
 @Named
