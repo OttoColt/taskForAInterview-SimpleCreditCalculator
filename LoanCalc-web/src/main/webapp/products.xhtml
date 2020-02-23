@@ -2,16 +2,45 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<title>кредитный калькулятор</title>
+<h2>Вы вошли!</h2>
+
+<div>
+    <p>Страница выбора кредитных продуктов.</p>
+</div>
+<h:head>
+</h:head>
 <h:body>
-    <title>кредитный калькулятор</title>
-    <h2>Вы вошли!</h2>
+    <h:form>
+        <h:panelGrid columns="1" >
 
-    <div>
-        <p>Страница выбора кредитных продуктов.</p>
-    </div>
+            <h:selectOneMenu value="#{dropDownBox.favCoffee1}">
+                <f:selectItems value="#{dropDownBox.favCoffee2Value}" />
+            </h:selectOneMenu>
 
+            <p:inputText id="txt3" value="#{sliderView.number7}" />
+            <p:slider for="txt3" step="5000" maxValue="100000" />
+
+            <h:selectOneRadio value="#{radioButton.favColor1}">
+                <f:selectItem itemValue="12" itemLabel="12" />
+                <f:selectItem itemValue="24" itemLabel="24" />
+                <f:selectItem itemValue="36" itemLabel="36" />
+                <f:selectItem itemValue="48" itemLabel="48" />
+            </h:selectOneRadio>
+        </h:panelGrid>
+
+        <h:panelGrid columns="1">
+            <h:commandButton value="Calculated">
+                <f:ajax  render="output" />
+            </h:commandButton>
+
+            <h:outputText id="output" value="#{calculatedTab.ddb}" />
+        </h:panelGrid>
+
+    </h:form>
 </h:body>
+
 </html>
