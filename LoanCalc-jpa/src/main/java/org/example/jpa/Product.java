@@ -14,7 +14,7 @@ public class Product {
     @GeneratedValue
     private int id;
 
-    @Size(min = 1, max = 25)
+    @Size(min = 1, max = 45)
     @Column(nullable = false, unique = true, name = "product_name")
     private String nameProd;
 
@@ -46,6 +46,14 @@ public class Product {
 
     public void setScheduleType(CreditScheduleType scheduleType) {
         this.scheduleType = scheduleType;
+    }
+
+    public List<ProductConditions> getProductConditionsList() {
+        return productConditionsList;
+    }
+
+    public void setProductConditionsList(List<ProductConditions> productConditionsList) {
+        this.productConditionsList = productConditionsList;
     }
 
     @Override

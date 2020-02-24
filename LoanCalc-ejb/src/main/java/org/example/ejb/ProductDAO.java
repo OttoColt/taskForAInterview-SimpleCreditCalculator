@@ -12,8 +12,9 @@ import javax.persistence.criteria.Root;
 import java.util.List;
 
 
-@Stateless
+
 @Named
+@Stateless
 public class ProductDAO {
 
     @PersistenceContext(unitName = "DataSourceEx")

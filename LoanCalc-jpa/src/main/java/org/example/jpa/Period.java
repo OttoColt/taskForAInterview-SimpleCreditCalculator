@@ -1,18 +1,18 @@
 package org.example.jpa;
 
 public enum Period {
-    ONE_YEAR("12"),
-    TWO_YEARS("24"),
-    TREE_YEARS("24"),
-    FORE_YEARS("24");
+    ONE_YEAR(12),
+    TWO_YEARS(24),
+    TREE_YEARS(36),
+    FORE_YEARS(48);
 
-    private String period;
+    private int period;
 
-    Period(String period){
+    Period(int period){
         this.period = period;
     }
 
-    public String getPeriod() {
+    public int getInt() {
         return period;
     }
 }

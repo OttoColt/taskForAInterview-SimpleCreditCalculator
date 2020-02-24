@@ -1,31 +1,54 @@
 
+import org.example.ejb.ProductDAO;
+import org.example.jpa.Product;
+import org.example.jpa.ProductConditions;
+
+import javax.ejb.Stateless;
 import javax.faces.bean.SessionScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
+import javax.ws.rs.GET;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 @Named
 @SessionScoped
+@Stateless
 public class DropDownBox {
 
-    public String favCoffee1;
+    public String product;
 
-    public String getFavCoffee1() {
-        return favCoffee1;
+    @Inject
+    public RadioButton radioButton;
+    @Inject
+    public Slider slider;
+
+    @Inject
+    public ProductDAO pd;
+
+    public String getProduct() {
+        return product;
     }
 
-    public void setFavCoffee1(String favCoffee1) {
-        this.favCoffee1 = favCoffee1;
+    public void setProduct(String product) {
+        this.product = product;
     }
 
-    private static Map<String,Object> coffee2Value;
-    static{
-        coffee2Value = new LinkedHashMap<String,Object>();
-        coffee2Value.put("Потребительский кредит", "Ipoteka"); //label, value
-        coffee2Value.put("Ипотека кредит на новостройку", "PotrebKredit");
-    }
+    @GET
+    public Map<String,Object> getRelevantProduct() {
+        int sum = slider.getSumOfCredit();
+        int period = radioButton.getPeriod();
 
-    public Map<String,Object> getFavCoffee2Value() {
-        return coffee2Value;
+        List<Product> pdL = pd.findAll();
+        Map<String,Object>relevantProduct = new LinkedHashMap<String,Object>();
+        for (Product p:pdL) {
+            for (ProductConditions pc:p.getProductConditionsList()) {
+                if(pc.getMinSum()<sum && pc.getMaxSum()>sum && pc.getPeriod().getInt()==period){
+                    relevantProduct.put(p.getNameProd(),p.getId());
+                }
+            }
+        }
+        return relevantProduct;
     }
 }

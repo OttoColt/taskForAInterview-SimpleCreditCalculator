@@ -3,8 +3,7 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:f="http://java.sun.com/jsf/core">
 <title>кредитный калькулятор</title>
 <h2>Вы вошли!</h2>
 
@@ -15,29 +14,31 @@
 </h:head>
 <h:body>
     <h:form>
-        <h:panelGrid columns="1" >
+        <h:selectOneMenu id="dropBox" value="#{dropDownBox.product}">
+            <f:selectItems value="#{dropDownBox.relevantProduct}"/>
+        </h:selectOneMenu>
 
-            <h:selectOneMenu value="#{dropDownBox.favCoffee1}">
-                <f:selectItems value="#{dropDownBox.favCoffee2Value}" />
-            </h:selectOneMenu>
-
-            <p:inputText id="txt3" value="#{sliderView.number7}" />
-            <p:slider for="txt3" step="5000" maxValue="100000" />
-
-            <h:selectOneRadio value="#{radioButton.favColor1}">
-                <f:selectItem itemValue="12" itemLabel="12" />
-                <f:selectItem itemValue="24" itemLabel="24" />
-                <f:selectItem itemValue="36" itemLabel="36" />
-                <f:selectItem itemValue="48" itemLabel="48" />
+        <h:panelGrid columns="1">
+            <h:selectOneRadio value="#{radioButton.period}">
+                <f:selectItem itemValue="12" itemLabel="12"/>
+                <f:selectItem itemValue="24" itemLabel="24"/>
+                <f:selectItem itemValue="36" itemLabel="36"/>
+                <f:selectItem itemValue="48" itemLabel="48"/>
+                <f:ajax render="dropBox"/>
             </h:selectOneRadio>
+
+            <h:inputText id="slider" value="#{slider.sumOfCredit}">
+                <f:ajax render="dropBox"/>
+            </h:inputText>
+
         </h:panelGrid>
 
         <h:panelGrid columns="1">
             <h:commandButton value="Calculated">
-                <f:ajax  render="output" />
+                <f:ajax render="output"/>
             </h:commandButton>
 
-            <h:outputText id="output" value="#{calculatedTab.ddb}" />
+            <h:outputText id="output" value="#{calculatedTab.ddb}"/>
         </h:panelGrid>
 
     </h:form>

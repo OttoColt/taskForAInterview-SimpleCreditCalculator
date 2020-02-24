@@ -1,20 +1,21 @@
 
+import javax.ejb.Stateless;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Named;
 
 @Named
 @SessionScoped
+@Stateless
 public class RadioButton{
 
-    public String favColor1;
+    private int period;
 
-    public String getFavColor1() {
-        return favColor1;
+    public int getPeriod() {
+        return period;
     }
 
-    public void setFavColor1(String favColor1) {
-        this.favColor1 = favColor1;
-        System.out.println(favColor1);
+    public void setPeriod(int period) {
+        this.period = period;
     }
 
 

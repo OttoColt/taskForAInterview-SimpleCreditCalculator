@@ -10,7 +10,7 @@ public class CalculatedTab {
     @Inject
     RadioButton rb;
     @Inject
-    SliderView sv;
+    Slider sv;
 
     public String s;
 
@@ -23,7 +23,7 @@ public class CalculatedTab {
     }
 
     public String getDdb() {
-        return ddb.favCoffee1;
+        return ddb.product;
     }
 
     public void setDdb(DropDownBox ddb) {
