@@ -38,8 +38,29 @@
                 <f:ajax render="output"/>
             </h:commandButton>
 
-            <h:outputText id="output" value="#{calculatedTab.ddb}"/>
         </h:panelGrid>
+        <h2>Payment schedule</h2>
+        <h:panelGroup rendered="#{empty payments}">
+            <em>Empty schedule.</em>
+        </h:panelGroup>
+        <h:dataTable var="_payment" value="#{payments}" rendered="#{not empty payments}">
+            <h:column>
+                <f:facet name="header">Current Balance</f:facet>
+                #{_payment.currentBalance}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Percent part</f:facet>
+                #{_payment.percentPart}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Debt part</f:facet>
+                #{_payment.debtPart}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Payment in month</f:facet>
+                #{_payment.paymentInMonth}
+            </h:column>
+        </h:dataTable>
 
     </h:form>
 </h:body>

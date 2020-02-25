@@ -22,11 +22,6 @@ public class CalculatedTab {
         this.s = s;
     }
 
-    public String getDdb() {
-        return ddb.product;
-    }
 
-    public void setDdb(DropDownBox ddb) {
-        this.ddb = ddb;
-    }
+
 }

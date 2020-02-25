@@ -16,8 +16,8 @@ import java.util.Map;
 @SessionScoped
 @Stateless
 public class DropDownBox {
-
-    public String product;
+    @Inject
+    public Product product;
 
     @Inject
     public RadioButton radioButton;
@@ -27,25 +27,25 @@ public class DropDownBox {
     @Inject
     public ProductDAO pd;
 
-    public String getProduct() {
+    public Product getProduct() {
         return product;
     }
 
-    public void setProduct(String product) {
+    public void setProduct(Product product) {
         this.product = product;
     }
 
     @GET
-    public Map<String,Object> getRelevantProduct() {
+    public Map<String,Product> getRelevantProduct() {
         int sum = slider.getSumOfCredit();
         int period = radioButton.getPeriod();
 
         List<Product> pdL = pd.findAll();
-        Map<String,Object>relevantProduct = new LinkedHashMap<String,Object>();
+        Map<String,Product>relevantProduct = new LinkedHashMap<String,Product>();
         for (Product p:pdL) {
             for (ProductConditions pc:p.getProductConditionsList()) {
                 if(pc.getMinSum()<sum && pc.getMaxSum()>sum && pc.getPeriod().getInt()==period){
-                    relevantProduct.put(p.getNameProd(),p.getId());
+                    relevantProduct.put(p.getNameProd(),p);
                 }
             }
         }

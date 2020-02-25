@@ -12,6 +12,18 @@
 
     <artifactId>LoanCalc-ejb</artifactId>
     <name>LoanCalc: EJB Module</name>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>7</source>
+                    <target>7</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <dependencies>
 
@@ -36,6 +48,7 @@
             <version>2.1</version>
             <scope>provided</scope>
         </dependency>
+
     </dependencies>
 
 
