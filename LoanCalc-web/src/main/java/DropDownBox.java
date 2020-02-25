@@ -16,7 +16,7 @@ import java.util.Map;
 @SessionScoped
 @Stateless
 public class DropDownBox {
-    @Inject
+
     public Product product;
 
     @Inject
@@ -32,6 +32,7 @@ public class DropDownBox {
     }
 
     public void setProduct(Product product) {
+        System.out.println(product);
         this.product = product;
     }
 

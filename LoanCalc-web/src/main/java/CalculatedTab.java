@@ -13,6 +13,7 @@ import javax.ws.rs.Produces;
 public class CalculatedTab {
     @Inject
     DataForSchedule dto;
+
     @Inject
     DropDownBox ddb;
     @Inject
@@ -23,16 +24,17 @@ public class CalculatedTab {
     public void createDTO() {
         double percent;
 
+//        System.out.println(ddb.getProduct().getScheduleType().getType());
+//        dto.setTypeSchedule(ddb.getProduct().getScheduleType().getType());
         dto.setTypeSchedule("ann");
         dto.setAmount(sv.getSumOfCredit());
 //        dto.setPercent(10);
-//        System.out.println(rb.getPeriod());
-//        dto.setPeriod(rb.getPeriod());
-//        System.out.println(ddb.getProduct().getScheduleType().getType());
-//        dto.setTypeSchedule(ddb.getProduct().getScheduleType().getType());
+        System.out.println(rb.getPeriod());
+        dto.setPeriod(rb.getPeriod());
+
 //        dto.setAmount(1000);
         dto.setPercent(10);
-        dto.setPeriod(12);
+//        dto.setPeriod(12);
 
     }
 }
