@@ -15,6 +15,7 @@ public class RadioButton{
     }
 
     public void setPeriod(int period) {
+        System.out.println(period);
         this.period = period;
     }
 

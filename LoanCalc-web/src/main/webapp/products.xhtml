@@ -34,8 +34,7 @@
         </h:panelGrid>
 
         <h:panelGrid columns="1">
-            <h:commandButton value="Calculated">
-                <f:ajax render="output"/>
+            <h:commandButton action="#{calculatedTab.createDTO}" value="Calculate!">
             </h:commandButton>
 
         </h:panelGrid>

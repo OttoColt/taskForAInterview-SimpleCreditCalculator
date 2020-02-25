@@ -1,7 +1,6 @@
 
 import javax.ejb.Stateless;
 import javax.faces.bean.SessionScoped;
-import javax.faces.event.ValueChangeEvent;
 import javax.inject.Named;
 
 @Named
@@ -16,6 +15,7 @@ public class Slider {
     }
 
     public void setSumOfCredit(int sumOfCredit) {
+        System.out.println(sumOfCredit);
         this.sumOfCredit = sumOfCredit;
     }
 
