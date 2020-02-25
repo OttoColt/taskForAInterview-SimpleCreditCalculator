@@ -71,19 +71,13 @@ public class ProductsWebController {
     }
 
     public void createDTO() {
-        double percent;
-
-//        System.out.println(ddb.getProduct().getScheduleType().getType());
-//        dto.setTypeSchedule(ddb.getProduct().getScheduleType().getType());
+        //TODO figure out why the bean "Product" is not injected
+        //this is a dummy code
         dto.setTypeSchedule("ann");
         dto.setAmount(sumOfCredit);
-//        dto.setPercent(10);
         System.out.println(period);
         dto.setPeriod(period);
-
-//        dto.setAmount(1000);
         dto.setPercent(10);
-//        dto.setPeriod(12);
 
     }
 }

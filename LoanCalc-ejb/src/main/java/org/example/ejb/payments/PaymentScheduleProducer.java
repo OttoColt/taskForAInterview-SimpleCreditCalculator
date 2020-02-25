@@ -10,6 +10,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import java.util.List;
 
+//TODO export payment classes to jar
 @RequestScoped
 public class PaymentScheduleProducer {
     @Inject
