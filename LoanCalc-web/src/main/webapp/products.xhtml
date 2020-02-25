@@ -14,12 +14,12 @@
 </h:head>
 <h:body>
     <h:form>
-        <h:selectOneMenu id="dropBox" value="#{dropDownBox.product}">
-            <f:selectItems value="#{dropDownBox.relevantProduct}"/>
+        <h:selectOneMenu id="dropBox" value="#{productsWebController.product}">
+            <f:selectItems value="#{productsWebController.relevantProduct}"/>
         </h:selectOneMenu>
 
         <h:panelGrid columns="1">
-            <h:selectOneRadio value="#{radioButton.period}">
+            <h:selectOneRadio value="#{productsWebController.period}">
                 <f:selectItem itemValue="12" itemLabel="12"/>
                 <f:selectItem itemValue="24" itemLabel="24"/>
                 <f:selectItem itemValue="36" itemLabel="36"/>
@@ -34,7 +34,7 @@
         </h:panelGrid>
 
         <h:panelGrid columns="1">
-            <h:commandButton action="#{calculatedTab.createDTO}" value="Calculate!">
+            <h:commandButton action="#{productsWebController.createDTO}" value="Calculate!">
             </h:commandButton>
 
         </h:panelGrid>

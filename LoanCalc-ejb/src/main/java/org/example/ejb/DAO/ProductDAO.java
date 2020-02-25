@@ -1,6 +1,6 @@
-package org.example.ejb;
+package org.example.ejb.DAO;
 
-import org.example.jpa.Product;
+import org.example.jpa.products.Product;
 
 import javax.ejb.Stateless;
 import javax.inject.Named;

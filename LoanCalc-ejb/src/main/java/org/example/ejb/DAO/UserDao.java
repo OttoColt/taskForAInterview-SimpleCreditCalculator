@@ -1,6 +1,6 @@
-package org.example.ejb;
+package org.example.ejb.DAO;
 
-import org.example.jpa.User;
+import org.example.jpa.users.User;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;

@@ -1,4 +1,4 @@
-package org.example.jpa;
+package org.example.jpa.products;
 
 
 import javax.ejb.Stateless;

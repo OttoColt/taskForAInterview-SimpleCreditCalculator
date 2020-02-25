@@ -1,4 +1,4 @@
-package org.example.ejb;
+package org.example.ejb.payments;
 
 import javax.ejb.Stateless;
 import java.math.BigDecimal;

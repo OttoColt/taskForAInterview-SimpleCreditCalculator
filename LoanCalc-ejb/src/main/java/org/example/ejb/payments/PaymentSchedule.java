@@ -1,4 +1,4 @@
-package org.example.ejb;
+package org.example.ejb.payments;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;

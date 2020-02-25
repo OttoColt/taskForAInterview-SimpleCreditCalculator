@@ -1,4 +1,4 @@
-package org.example.ejb;
+package org.example.ejb.payments;
 
 
 import javax.annotation.PostConstruct;

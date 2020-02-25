@@ -1,4 +1,4 @@
-package org.example.jpa;
+package org.example.jpa.users;
 
 import javax.inject.Named;
 import javax.persistence.*;
