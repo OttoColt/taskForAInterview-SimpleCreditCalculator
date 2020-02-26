@@ -9,13 +9,13 @@
 <h2>Вы вошли!</h2>
 
 <div>
-    <p>Страница выбора кредитных продуктов.</p>
+    <p>Здесь Вы можете выбрать подходящий кредит.</p>
 </div>
 <h:head>
 </h:head>
 <h:body>
     <h:form>
-        <h:selectOneMenu id="dropBox" value="#{productsWebController.productName}">
+        <h:selectOneMenu id="dropBox" value="#{productsWebController.productId}">
             <f:selectItems value="#{productsWebController.relevantProduct}"/>
         </h:selectOneMenu>
 
@@ -34,29 +34,27 @@
             </p:slider>
         </h:panelGrid>
         <h:panelGrid columns="1">
-            <h:commandButton action="#{dtoProducer.createDTO}" value="Calculate!">
+            <h:commandButton action="#{dtoController.createDTO}" value="Рассчитать график платежей">
             </h:commandButton>
 
         </h:panelGrid>
-        <h2>Payment schedule</h2>
-        <h:panelGroup rendered="#{empty payments}">
-            <em>Empty schedule.</em>
-        </h:panelGroup>
+
+        <h:outputText rendered="#{not empty payments}">График платежей по Вашему кредиту.</h:outputText>
         <h:dataTable var="_payment" value="#{payments}" rendered="#{not empty payments}">
             <h:column>
-                <f:facet name="header">Current Balance</f:facet>
+                <f:facet name="header">Остаток долга</f:facet>
                 #{_payment.currentBalance}
             </h:column>
             <h:column>
-                <f:facet name="header">Percent part</f:facet>
+                <f:facet name="header">Процентная часть</f:facet>
                 #{_payment.percentPart}
             </h:column>
             <h:column>
-                <f:facet name="header">Debt part</f:facet>
+                <f:facet name="header">Часть на погашение</f:facet>
                 #{_payment.debtPart}
             </h:column>
             <h:column>
-                <f:facet name="header">Payment in month</f:facet>
+                <f:facet name="header">Месячный платеж</f:facet>
                 #{_payment.paymentInMonth}
             </h:column>
         </h:dataTable>

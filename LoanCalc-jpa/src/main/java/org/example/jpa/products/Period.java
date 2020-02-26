@@ -8,7 +8,7 @@ public enum Period {
 
     private int period;
 
-    Period(int period){
+    Period(int period) {
         this.period = period;
     }
 

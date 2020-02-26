@@ -21,7 +21,7 @@ public class UserDao {
 
     private User newMember;
 
-    public void test(){
+    public void test() {
         System.out.println(findAll());
     }
 
@@ -34,7 +34,6 @@ public class UserDao {
     }
 
     public String isRegistered() {
-        System.out.println(newMember.getLogin());
 
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<User> criteria = cb.createQuery(User.class);
@@ -44,10 +43,8 @@ public class UserDao {
 
         User user = em.createQuery(criteria).getSingleResult();
 
-        System.out.println(user);
 
-        if(user.getPassword().equals(newMember.getPassword())){
-            System.out.println("is registered");
+        if (user.getPassword().equals(newMember.getPassword())) {
             return "true";
         }
         return null;

@@ -12,7 +12,6 @@ import javax.persistence.criteria.Root;
 import java.util.List;
 
 
-
 @Named
 @Stateless
 public class ProductDAO {
@@ -20,8 +19,12 @@ public class ProductDAO {
     @PersistenceContext(unitName = "DataSourceEx")
     private EntityManager em;
 
-    public void test(){
+    public void test() {
         System.out.println(findAll());
+    }
+
+    public Product findById(int id) {
+        return em.find(Product.class, id);
     }
 
     public List<Product> findAll() {

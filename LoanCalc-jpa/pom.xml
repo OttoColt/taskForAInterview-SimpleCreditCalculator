@@ -12,19 +12,7 @@
     <artifactId>LoanCalc-jpa</artifactId>
 
     <name>LoanCalc: JPA Module</name>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.6.1</version>
-                <configuration>
-                    <source>7</source>
-                    <target>7</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+
 
     <dependencies>
 
@@ -44,6 +32,6 @@
             <scope>provided</scope>
         </dependency>
 
-
     </dependencies>
+
 </project>

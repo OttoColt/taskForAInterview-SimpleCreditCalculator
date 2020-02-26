@@ -5,7 +5,7 @@ public enum CreditScheduleType {
     DIFF("diff");
     private String type;
 
-    CreditScheduleType(String s){
+    CreditScheduleType(String s) {
         this.type = s;
     }
 

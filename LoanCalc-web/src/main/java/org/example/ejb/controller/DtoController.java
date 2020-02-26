@@ -1,17 +1,20 @@
+package org.example.ejb.controller;
+
+import org.example.ejb.DAO.ProductDAO;
 import org.example.ejb.payments.DataForSchedule;
 import org.example.ejb.payments.PaymentScheduleProducer;
 import org.example.jpa.products.Product;
+import org.example.jpa.products.ProductConditions;
 
 import javax.ejb.Stateless;
 import javax.faces.bean.RequestScoped;
-import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 @Named
 @RequestScoped
 @Stateless
-public class DtoProducer {
+public class DtoController {
     @Inject
     PaymentScheduleProducer scheduleProducer;
 
@@ -22,18 +25,19 @@ public class DtoProducer {
     ProductsWebController productsWebController;
 
     @Inject
-    public Product product;
+    public ProductDAO pd;
 
     public void createDTO() {
-        System.out.println("create dto!!!!");
-        System.out.println(product.getNameProd());
-        //TODO figure out why the bean "Product" is not injected
-        //this is a dummy code
-        dto.setTypeSchedule("ann");
+        Product product = pd.findById(Integer.parseInt(productsWebController.getProductId()));
+
+        int percent = 0;
+        for (ProductConditions pc : product.getProductConditionsList()) {
+            percent = Math.max(percent, pc.getPercent());
+        }
+        dto.setTypeSchedule(product.getScheduleType().getType());
         dto.setAmount(productsWebController.getSumOfCredit());
-        System.out.println(productsWebController.getPeriod());
         dto.setPeriod(productsWebController.getPeriod());
-        dto.setPercent(10);
+        dto.setPercent(percent);
         scheduleProducer.calculatePayments();
 
     }

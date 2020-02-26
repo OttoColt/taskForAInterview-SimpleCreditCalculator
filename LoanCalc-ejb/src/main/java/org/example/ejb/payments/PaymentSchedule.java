@@ -105,9 +105,9 @@ public class PaymentSchedule {
         List<Payment> schedule = new ArrayList<>();
 
         if (dto.getTypeSchedule().equals("ann")) {
-            createAnnuitySchedule(schedule,dto);
+            createAnnuitySchedule(schedule, dto);
         } else if (dto.getTypeSchedule().equals("diff")) {
-            createDifferentiatedSchedule(schedule,dto);
+            createDifferentiatedSchedule(schedule, dto);
         }
         return schedule;
     }

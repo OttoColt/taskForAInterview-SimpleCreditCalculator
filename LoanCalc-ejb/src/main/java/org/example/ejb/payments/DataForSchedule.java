@@ -1,6 +1,5 @@
 package org.example.ejb.payments;
 
-import javax.ejb.Stateful;
 import javax.ejb.Stateless;
 import java.util.Objects;
 
