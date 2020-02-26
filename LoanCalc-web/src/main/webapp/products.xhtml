@@ -3,7 +3,8 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 <title>кредитный калькулятор</title>
 <h2>Вы вошли!</h2>
 
@@ -14,31 +15,26 @@
 </h:head>
 <h:body>
     <h:form>
-        <h:selectOneMenu id="dropBox" value="#{productsWebController.product}">
+        <h:selectOneMenu id="dropBox" value="#{productsWebController.productName}">
             <f:selectItems value="#{productsWebController.relevantProduct}"/>
         </h:selectOneMenu>
 
         <h:panelGrid columns="1">
             <h:selectOneRadio value="#{productsWebController.period}">
-                <f:selectItem itemValue="12" itemLabel="12"/>
+                <f:selectItem itemValue="12" itemLabel="12" />
                 <f:selectItem itemValue="24" itemLabel="24"/>
                 <f:selectItem itemValue="36" itemLabel="36"/>
                 <f:selectItem itemValue="48" itemLabel="48"/>
                 <f:ajax render="dropBox"/>
             </h:selectOneRadio>
 
-            <h:inputText id="slider" value="#{slider.sumOfCredit}">
-                <f:ajax render="dropBox"/>
-            </h:inputText>
-
+            <p:inputText id="slider" value="#{productsWebController.sumOfCredit}" />
+            <p:slider for="slider" minValue="10000" maxValue="1200000" step="10000">
+                <p:ajax  process="slider" update="dropBox" />
+            </p:slider>
         </h:panelGrid>
-        <!--TODO
-        Fix it!
-        the table is not always updated at the click of a button.
-        problems with the slider
-        -->
         <h:panelGrid columns="1">
-            <h:commandButton action="#{productsWebController.createDTO}" value="Calculate!">
+            <h:commandButton action="#{dtoProducer.createDTO}" value="Calculate!">
             </h:commandButton>
 
         </h:panelGrid>

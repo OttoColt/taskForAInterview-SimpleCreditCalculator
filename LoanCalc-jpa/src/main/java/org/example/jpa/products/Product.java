@@ -1,6 +1,7 @@
 package org.example.jpa.products;
 
 
+import javax.ejb.Stateful;
 import javax.ejb.Stateless;
 import javax.inject.Named;
 import javax.persistence.*;
@@ -8,9 +9,8 @@ import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
-@Named
 @Table(name = "products")
-@Stateless
+@Stateful
 public class Product {
     @Id
     @GeneratedValue
