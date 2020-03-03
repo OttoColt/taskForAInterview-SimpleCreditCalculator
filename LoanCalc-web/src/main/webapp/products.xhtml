@@ -15,28 +15,28 @@
 </h:head>
 <h:body>
     <h:form>
-        <h:selectOneMenu id="dropBox" value="#{productsWebController.productId}">
-            <f:selectItems value="#{productsWebController.relevantProduct}"/>
+        <h:selectOneMenu id="dropBox" value="#{productsDropList.productId}">
+            <f:selectItems value="#{productsDropList.relevantProduct}"/>
         </h:selectOneMenu>
 
         <h:panelGrid columns="1">
-            <h:selectOneRadio value="#{productsWebController.period}">
-                <f:selectItem itemValue="12" itemLabel="12" />
+            <h:selectOneRadio value="#{productsDropList.period}">
+                <f:selectItem itemValue="12" itemLabel="12"/>
                 <f:selectItem itemValue="24" itemLabel="24"/>
                 <f:selectItem itemValue="36" itemLabel="36"/>
                 <f:selectItem itemValue="48" itemLabel="48"/>
                 <f:ajax render="dropBox"/>
             </h:selectOneRadio>
 
-            <p:inputText id="slider" value="#{productsWebController.sumOfCredit}" />
+            <p:inputText id="slider" value="#{productsDropList.sumOfCredit}"/>
             <p:slider for="slider" minValue="10000" maxValue="1200000" step="10000">
-                <p:ajax  process="slider" update="dropBox" />
+                <p:ajax process="slider" update="dropBox"/>
             </p:slider>
         </h:panelGrid>
-        <h:panelGrid columns="1">
-            <h:commandButton action="#{dtoController.createDTO}" value="Рассчитать график платежей">
-            </h:commandButton>
 
+        <h:panelGrid columns="1">
+            <h:commandButton action="#{scheduleMaker.makePaymentsSchedule}" value="Рассчитать график платежей">
+            </h:commandButton>
         </h:panelGrid>
 
         <h:outputText rendered="#{not empty payments}">График платежей по Вашему кредиту.</h:outputText>

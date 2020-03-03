@@ -17,18 +17,16 @@ import java.util.List;
 @Named
 @RequestScoped
 @Stateless
-public class DtoController {
-    @Inject
-    PaymentScheduleProducer scheduleProducer;
+public class ScheduleMaker {
 
     @Inject
-    DataForSchedule dto;
+    private DataForSchedule dataForSchedule;
 
     @Inject
-    ProductsWebController productsWebController;
+    private ProductsDropList productsDropList;
 
     @Inject
-    public ProductDAO pd;
+    private ProductDAO pd;
 
     @Inject
     private PaymentSchedule paymentSchedule;
@@ -41,23 +39,21 @@ public class DtoController {
         return payments;
     }
 
-    public void createDTO() {
-        Product product = pd.findById(Integer.parseInt(productsWebController.getProductId()));
+    public void makePaymentsSchedule() {
+        Product product = pd.findById(Integer.parseInt(productsDropList.getProductId()));
 
         int percent = 0;
         for (ProductConditions pc : product.getProductConditionsList()) {
             percent = Math.max(percent, pc.getPercent());
         }
-        dto.setTypeSchedule(product.getScheduleType().getType());
-        dto.setAmount(productsWebController.getSumOfCredit());
-        dto.setPeriod(productsWebController.getPeriod());
-        dto.setPercent(percent);
+        dataForSchedule.setTypeSchedule(product.getScheduleType().getType());
+        dataForSchedule.setAmount(productsDropList.getSumOfCredit());
+        dataForSchedule.setPeriod(productsDropList.getPeriod());
+        dataForSchedule.setPercent(percent);
 
-        if (dto.getTypeSchedule() != null && dto.getPercent() != 0 && dto.getAmount() != 0 && dto.getPeriod() != 0) {
-            payments = paymentSchedule.getPayments(dto);
+        if (dataForSchedule.getTypeSchedule() != null && dataForSchedule.getPercent() != 0 && dataForSchedule.getAmount() != 0 && dataForSchedule.getPeriod() != 0) {
+            payments = paymentSchedule.getPayments(dataForSchedule);
         }
-
-//        scheduleProducer.calculatePayments();
 
     }
 }

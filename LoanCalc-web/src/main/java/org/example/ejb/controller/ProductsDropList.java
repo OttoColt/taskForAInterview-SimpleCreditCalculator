@@ -16,15 +16,14 @@ import java.util.Map;
 @Named
 @RequestScoped
 @Stateless
-public class ProductsWebController {
+public class ProductsDropList {
 
     private int period;
     private int sumOfCredit;
-
-    public String productId;
+    private String productId;
 
     @Inject
-    public ProductDAO pd;
+    private ProductDAO pd;
 
     @PostConstruct
     public void init() {
