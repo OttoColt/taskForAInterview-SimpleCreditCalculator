@@ -3,6 +3,7 @@ package org.example.ejb.DAO;
 import org.example.jpa.products.DAO;
 import org.example.jpa.products.Product;
 
+import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
@@ -15,7 +16,8 @@ import java.util.List;
 
 @Named
 @Stateless
-public class ProductDAO{
+@LocalBean
+public class ProductDAO implements DAO{
 
     @PersistenceContext(unitName = "DataSourceEx")
     private EntityManager em;

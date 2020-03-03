@@ -8,6 +8,6 @@ import java.util.List;
 
 @Local
 public interface DAO <T>{
-    public Product findById(int id);
+    public T findById(int id);
     public List<T> findAll();
 }

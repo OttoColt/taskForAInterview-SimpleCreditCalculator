@@ -1,8 +1,10 @@
 package org.example.ejb.DAO;
 
+import org.example.jpa.products.DAO;
 import org.example.jpa.users.User;
 
 import javax.annotation.PostConstruct;
+import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.enterprise.inject.Produces;
 import javax.inject.Named;
@@ -15,11 +17,17 @@ import java.util.List;
 
 @Stateless
 @Named
-public class UserDao {
+@LocalBean
+public class UserDao implements DAO {
     @PersistenceContext(unitName = "DataSourceEx")
     private EntityManager em;
 
     private User member;
+
+    @Override
+    public User findById(int id) {
+        return em.find(User.class, id);
+    }
 
     public List<User> findAll() {
         CriteriaBuilder cb = em.getCriteriaBuilder();
