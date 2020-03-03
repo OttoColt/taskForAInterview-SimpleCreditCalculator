@@ -19,11 +19,7 @@ public class UserDao {
     @PersistenceContext(unitName = "DataSourceEx")
     private EntityManager em;
 
-    private User newMember;
-
-    public void test() {
-        System.out.println(findAll());
-    }
+    private User member;
 
     public List<User> findAll() {
         CriteriaBuilder cb = em.getCriteriaBuilder();
@@ -39,12 +35,12 @@ public class UserDao {
         CriteriaQuery<User> criteria = cb.createQuery(User.class);
         Root<User> member = criteria.from(User.class);
 
-        criteria.select(member).where(cb.equal(member.get("login"), newMember.getLogin()));
+        criteria.select(member).where(cb.equal(member.get("login"), this.member.getLogin()));
 
         User user = em.createQuery(criteria).getSingleResult();
 
 
-        if (user.getPassword().equals(newMember.getPassword())) {
+        if (user.getPassword().equals(this.member.getPassword())) {
             return "true";
         }
         return null;
@@ -52,13 +48,13 @@ public class UserDao {
 
     @Produces
     @Named
-    public User getNewMember() {
-        return newMember;
+    public User getMember() {
+        return member;
     }
 
 
     @PostConstruct
     public void initNewMember() {
-        newMember = new User();
+        member = new User();
     }
 }

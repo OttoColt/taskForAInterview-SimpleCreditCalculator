@@ -14,12 +14,12 @@
     <h:form>
         <h:panelGrid columns="3" columnClasses="rightAlign,leftAlign">
             <h:outputLabel for="login" value="Логин: "/>
-            <h:inputText id="login" value="#{newMember.login}"/>
+            <h:inputText id="login" value="#{member.login}"/>
             <h:message for="login" errorClass="invalid"/>
 
 
             <h:outputLabel for="password" value="Пароль:"/>
-            <h:inputText id="password" value="#{newMember.password}"/>
+            <h:inputText id="password" value="#{member.password}"/>
             <h:message for="password" errorClass="invalid"/>
 
 

@@ -3,6 +3,7 @@
 *.iml
 *.bat
 *.txt
+*.uml
 .idea
 desktop.ini/
 .classpath

@@ -1,5 +1,6 @@
 package org.example.ejb.DAO;
 
+import org.example.jpa.products.DAO;
 import org.example.jpa.products.Product;
 
 import javax.ejb.Stateless;
@@ -14,14 +15,10 @@ import java.util.List;
 
 @Named
 @Stateless
-public class ProductDAO {
+public class ProductDAO{
 
     @PersistenceContext(unitName = "DataSourceEx")
     private EntityManager em;
-
-    public void test() {
-        System.out.println(findAll());
-    }
 
     public Product findById(int id) {
         return em.find(Product.class, id);
