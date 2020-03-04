@@ -40,7 +40,13 @@ public class ScheduleMaker {
     }
 
     public void makePaymentsSchedule() {
-        Product product = pd.findById(Integer.parseInt(productsDropList.getProductId()));
+        Product product;
+
+        try {
+            product = pd.findById(Integer.parseInt(productsDropList.getProductId()));
+        } catch (NumberFormatException e) {
+            return;
+        }
 
         int percent = 0;
         for (ProductConditions pc : product.getProductConditionsList()) {
@@ -53,6 +59,8 @@ public class ScheduleMaker {
 
         if (dataForSchedule.getTypeSchedule() != null && dataForSchedule.getPercent() != 0 && dataForSchedule.getAmount() != 0 && dataForSchedule.getPeriod() != 0) {
             payments = paymentSchedule.getPayments(dataForSchedule);
+        } else {
+            payments = null;
         }
 
     }

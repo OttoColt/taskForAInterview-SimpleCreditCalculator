@@ -4,7 +4,6 @@ import javax.ejb.Stateless;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-@Stateless
 public class Payment {
 
     private double paymentInMonth;

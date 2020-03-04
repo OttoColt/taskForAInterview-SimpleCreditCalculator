@@ -23,12 +23,12 @@ import java.util.List;
 
 @Stateless
 public class PaymentSchedule {
-    public static final String AMOUNT = "amount";
+/*    public static final String AMOUNT = "amount";
     public static final String PERCENT = "percent";
     public static final String PERIOD = "period";
-    public static final String TYPE_SCHEDULE = "type_schedule";
+    public static final String TYPE_SCHEDULE = "type_schedule";*/
 
-    public ByteArrayOutputStream getByteOutputStream(InputStream in) {
+/*    public ByteArrayOutputStream getByteOutputStream(InputStream in) {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 
         DocumentBuilder builder;
@@ -73,9 +73,9 @@ public class PaymentSchedule {
         }
 
         return bos;
-    }
+    }*/
 
-    private Document getDocument(DocumentBuilder builder, List<Payment> schedule) {
+/*    private Document getDocument(DocumentBuilder builder, List<Payment> schedule) {
         Document docOut = builder.newDocument();
         Element rootElement = docOut.createElement("schedule");
         docOut.appendChild(rootElement);
@@ -98,21 +98,9 @@ public class PaymentSchedule {
             payment.appendChild(percentPart);
         }
         return docOut;
-    }
+    }*/
 
-    public List<Payment> getPayments(DataForSchedule dto) {
-
-        List<Payment> schedule = new ArrayList<>();
-
-        if (dto.getTypeSchedule().equals("ann")) {
-            createAnnuitySchedule(schedule, dto);
-        } else if (dto.getTypeSchedule().equals("diff")) {
-            createDifferentiatedSchedule(schedule, dto);
-        }
-        return schedule;
-    }
-
-    public DataForSchedule getDTO(InputStream in, DocumentBuilder builder) {
+/*    public DataForSchedule getDTO(InputStream in, DocumentBuilder builder) {
         DataForSchedule dto = new DataForSchedule();
         Document doc;
         try {
@@ -138,6 +126,18 @@ public class PaymentSchedule {
             }
         }
         return dto;
+    }*/
+
+    public List<Payment> getPayments(DataForSchedule dto) {
+
+        List<Payment> schedule = new ArrayList<>();
+
+        if (dto.getTypeSchedule().equals("ann")) {
+            createAnnuitySchedule(schedule, dto);
+        } else if (dto.getTypeSchedule().equals("diff")) {
+            createDifferentiatedSchedule(schedule, dto);
+        }
+        return schedule;
     }
 
     public void createAnnuitySchedule(List<Payment> annuitySchedule, DataForSchedule dto) {
