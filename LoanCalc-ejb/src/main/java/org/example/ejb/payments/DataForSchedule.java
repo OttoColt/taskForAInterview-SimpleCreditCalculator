@@ -54,7 +54,7 @@ public class DataForSchedule {
 
     @Override
     public String toString() {
-        return "DataToSchedule{" +
+        return "DataForSchedule{" +
                 "amount=" + amount +
                 ", percent=" + percent +
                 ", period=" + period +

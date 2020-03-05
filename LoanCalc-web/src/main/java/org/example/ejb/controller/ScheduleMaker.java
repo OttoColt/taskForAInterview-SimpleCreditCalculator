@@ -13,11 +13,15 @@ import javax.faces.bean.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.util.List;
+import java.util.logging.Logger;
 
 @Named
 @RequestScoped
 @Stateless
 public class ScheduleMaker {
+
+    @Inject
+    private Logger logger;
 
     @Inject
     private DataForSchedule dataForSchedule;
@@ -40,6 +44,7 @@ public class ScheduleMaker {
     }
 
     public void makePaymentsSchedule() {
+
         Product product;
 
         try {
@@ -57,6 +62,8 @@ public class ScheduleMaker {
         dataForSchedule.setPeriod(productsDropList.getPeriod());
         dataForSchedule.setPercent(percent);
 
+        String message = "makePaymentsSchedule dataForSchedule = "+dataForSchedule.toString();
+        logger.info(message);
         if (dataForSchedule.getTypeSchedule() != null && dataForSchedule.getPercent() != 0 && dataForSchedule.getAmount() != 0 && dataForSchedule.getPeriod() != 0) {
             payments = paymentSchedule.getPayments(dataForSchedule);
         } else {
